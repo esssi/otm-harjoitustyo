@@ -1,0 +1,114 @@
+commit ffb7bb3a2bef0642aa120935fef664606f331d23
+Author: essi <essi.e.saario@gmail.com>
+Date:   Thu Mar 15 13:29:36 2018 +0200
+
+    poistot
+
+ tiedostoja/file1 | 0
+ tiedostoja/file2 | 0
+ 2 files changed, 0 insertions(+), 0 deletions(-)
+
+commit 8356d72ab4645e0f7f39afffbea46c0b098abe35
+Author: essi <essi.e.saario@gmail.com>
+Date:   Thu Mar 15 13:28:14 2018 +0200
+
+    file2 muutettu file22:ksi
+
+ tiedostoja/file22 | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit f3c1025ec42162faaa8d728e0fc04975111676db
+Author: essi <essi.e.saario@gmail.com>
+Date:   Thu Mar 15 13:20:08 2018 +0200
+
+    3 uutta tiedostoa
+
+ tiedostoja/file1 | 0
+ tiedostoja/file2 | 0
+ tiedostoja/file3 | 0
+ 3 files changed, 0 insertions(+), 0 deletions(-)
+
+commit 0301b9dc04c320b26948371d88acff4f394f88a9
+Author: essi <essi.e.saario@gmail.com>
+Date:   Thu Mar 15 13:04:04 2018 +0200
+
+    muutoksia teksteihin
+
+ eka.txt      | 2 +-
+ kolmas.txt   | 1 +
+ tiedosto.txt | 2 --
+ 3 files changed, 2 insertions(+), 3 deletions(-)
+
+commit b597e80ea18bc9975c544abeabf13a533a11af72
+Author: essi <essi.e.saario@gmail.com>
+Date:   Thu Mar 15 12:58:04 2018 +0200
+
+    muutos
+
+ eka.txt | 2 ++
+ 1 file changed, 2 insertions(+)
+
+commit 7c6208dd6fcb70f945076901306a745bc888e690
+Author: essi <essi.e.saario@gmail.com>
+Date:   Thu Mar 15 12:56:48 2018 +0200
+
+    nimi vaihdettu
+
+ toinen.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit a466bb565a08f4f282f1f628c82c56a900be0f9f
+Author: essi <essi.e.saario@gmail.com>
+Date:   Thu Mar 15 12:50:42 2018 +0200
+
+    muutettu
+
+ tiedosto.txt | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+commit a6fec7a7619a10ae5e46d9cb2079c8b6b977494e
+Author: essi <essi.e.saario@gmail.com>
+Date:   Thu Mar 15 12:47:28 2018 +0200
+
+    muutettu
+
+ tiedosto.txt | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+commit 3416dcf43899b95fb4cbf190f88790c39baa031e
+Author: essi <essi.e.saario@gmail.com>
+Date:   Tue Mar 13 13:47:38 2018 +0200
+
+    lisäys
+
+ stuff/morestuff.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit 55cfd6d313538e1e23494ea97f2185b4fd06d59c
+Author: essi <essi.e.saario@gmail.com>
+Date:   Tue Mar 13 13:43:41 2018 +0200
+
+    lisäys
+
+ kolmas.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit e51102c2ba11d121b75d3a873b446a3f4a3285e7
+Author: essi <essi.e.saario@gmail.com>
+Date:   Tue Mar 13 13:40:15 2018 +0200
+
+    muutos ja lisäys
+
+ tiedosto.txt | 2 ++
+ toinen.txt   | 0
+ 2 files changed, 2 insertions(+)
+
+commit 8c50b364e8c1fb06b344b8b510b9dd5eb2701791
+Author: essi <essi.e.saario@gmail.com>
+Date:   Tue Mar 13 13:08:44 2018 +0200
+
+    tiedosto.txt luotu
+
+ tiedosto.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
