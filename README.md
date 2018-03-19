@@ -5,3 +5,5 @@ Hei! Onko tämä teksti **lihavoitu**? Entä *onko tämä kursivoitu?*
 [komentorivi.txt](https://github.com/esssi/otm-harjoitustyo/blob/master/laskarit/viikko1/komentorivi.txt)
 
 Jipii, se toimii!
+
+Hei hei!
