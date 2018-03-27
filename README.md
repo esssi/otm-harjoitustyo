@@ -1,4 +1,4 @@
-**Linkkejä erilaisiin tehtäviin ja dokumentointiin*
+**Linkkejä erilaisiin tehtäviin ja dokumentointiin**
 
 [gitlog.txt](https://github.com/esssi/otm-harjoitustyo/blob/master/laskarit/viikko1/gitlog.txt)
 
