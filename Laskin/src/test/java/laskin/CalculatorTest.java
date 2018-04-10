@@ -96,4 +96,11 @@ public class CalculatorTest {
         assertTrue(c.getCurrentValue() == 362880);
     }
     
+    @Test
+    public void clearSetsZeroAsCurrentValue(){
+        c.subtract(4);
+        c.clear();
+        
+        assertTrue(c.getCurrentValue() == 0);
+    }
 }
