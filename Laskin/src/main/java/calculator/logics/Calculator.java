@@ -1,5 +1,5 @@
 
-package laskin;
+package calculator.logics;
 
 public class Calculator {
     private double currentValue;
