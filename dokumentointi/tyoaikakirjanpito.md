@@ -7,4 +7,6 @@ Päivämäärä | Aika | Mitä tein
 14.4. | 1,5 | JavaFx:n kertausta
 15.4. | 1,5 | Harjoituskoodia
 16.4. | 1,5 | Käyttöliittymän aloitus
+17.4. | 2 | Checkstylen käyttöönotto, käyttöliittymän jatkaminen
+YHT. | 13 | -
 
