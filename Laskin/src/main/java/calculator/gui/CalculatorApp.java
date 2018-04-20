@@ -1,6 +1,7 @@
 
 package calculator.gui;
 import calculator.logics.Calculator;
+//import calculator.logics.Input;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
@@ -11,12 +12,41 @@ import javafx.scene.layout.BorderPane;
 
 public class CalculatorApp extends Application {
     
+    private boolean resultShowing;
+    Calculator calculator = new Calculator();
+    Label text = new Label("");
+    
+    private void clearText() {
+        calculator.clear();
+        text.setText("");
+        this.resultShowing = false;
+    }
+    
+    public void numberButtonAction(Button b){
+        b.setOnAction((event) -> {
+            /*tarkistetaan, ettei tulos jää näytölle, jos käyttäjä ei
+            muista painaa C-nappulaa ennen numeroita*/
+            if (this.resultShowing == true) {
+                this.clearText();
+            }
+            String currentText = text.getText();
+            text.setText(currentText + b.getText());
+        });
+    }
+    
+    public void operationButtonAction(Button b) {
+        b.setOnAction((event) -> {
+            text.setText(text.getText() + b.getText());
+            this.resultShowing = false;
+        });
+    }
+    
     @Override
     public void start(Stage window) {
-        Calculator calculator = new Calculator();
-   
+        this.resultShowing = false;
+        
         BorderPane layout = new BorderPane();
-        Label text = new Label("");
+        
         text.setMinHeight(40);
         layout.setTop(text);
         
@@ -29,69 +59,51 @@ public class CalculatorApp extends Application {
                 buttons.add(numberButton, j, i);
                 number--;
 
-                numberButton.setOnAction((event) -> {
-                    String currentText = text.getText();
-                    text.setText(currentText + numberButton.getText());
-                });
+                this.numberButtonAction(numberButton);
             }
         }
         
         Button zero = new Button("0");
         zero.setOnAction((event) -> {
-            String currentText = text.getText();
-            text.setText(currentText + "0");
+            this.numberButtonAction(zero);
         });
         buttons.add(zero, 2, 4);
-        // harkitse nappien luomisen mahdollistavaa luokkaa? liikaa tekstiä nyt
+        
         Button clear = new Button("C");
         clear.setOnAction((event) -> {
-            calculator.clear();
-            text.setText("");
+            this.clearText();
         });
         buttons.add(clear, 4, 1);
         //napit eivät vielä suorita mitään laskuja
         Button equals = new Button("=");
         equals.setOnAction((event) -> {
             text.setText("" + calculator.getCurrentValue());
+            this.resultShowing = true;
         });
         buttons.add(equals, 4, 4);
         
         Button plus = new Button("+");
-        plus.setOnAction((event) -> {
-            text.setText(text.getText() + plus.getText());
-        });
+        this.operationButtonAction(plus);
         buttons.add(plus, 5, 1);
         
         Button minus = new Button("-");
-        minus.setOnAction((event) -> {
-            text.setText(text.getText() + minus.getText());
-        });
+        this.operationButtonAction(minus);
         buttons.add(minus, 5, 2);
         
         Button times = new Button("*");
-        times.setOnAction((event) -> {
-            text.setText(text.getText() + times.getText());
-        });
+        this.operationButtonAction(times);
         buttons.add(times, 5, 3);
         
         Button divide = new Button("/");
-        divide.setOnAction((event) -> {
-            text.setText(text.getText() + divide.getText());
-        });
+        this.operationButtonAction(divide);
         buttons.add(divide, 5, 4);
         
         Button exponent = new Button("^");
-        exponent.setOnAction((event) -> {
-            //kesken
-            text.setText(text.getText() + exponent.getText());
-        });
+        this.operationButtonAction(exponent);
         buttons.add(exponent, 4, 2);
         
         Button factorial = new Button("!");
-        factorial.setOnAction((event) -> {
-            //kesken
-            text.setText(text.getText() + factorial.getText());
-        });
+        this.operationButtonAction(factorial);
         buttons.add(factorial, 4, 3);
         
         Button point = new Button(".");

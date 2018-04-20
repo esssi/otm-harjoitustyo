@@ -8,5 +8,7 @@ Päivämäärä | Aika | Mitä tein
 15.4. | 1,5 | Harjoituskoodia
 16.4. | 1,5 | Käyttöliittymän aloitus
 17.4. | 2 | Checkstylen käyttöönotto, käyttöliittymän jatkaminen
-YHT. | 13 | -
+19.4. | 4 | Oh-ja:n kertausta; suunnittelua
+20.4. | 1,5 | Ohjelmointia
+YHT. | 18,5 | -
 
