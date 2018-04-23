@@ -1,7 +1,7 @@
 
 package calculator.gui;
 import calculator.logics.Calculator;
-//import calculator.logics.Input;
+import calculator.logics.Input;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
@@ -36,6 +36,10 @@ public class CalculatorApp extends Application {
     
     public void operationButtonAction(Button b) {
         b.setOnAction((event) -> {
+            if (this.resultShowing == true) {
+                // muuten lisää tuloksen uudelleen... HUPS ei toimi neg. tuloksilla
+                calculator.subtract(Double.parseDouble(text.getText()));
+            }
             text.setText(text.getText() + b.getText());
             this.resultShowing = false;
         });
@@ -74,9 +78,11 @@ public class CalculatorApp extends Application {
             this.clearText();
         });
         buttons.add(clear, 4, 1);
-        //napit eivät vielä suorita mitään laskuja
+        //napit eivät vielä toimi kunnolla!!!
         Button equals = new Button("=");
         equals.setOnAction((event) -> {
+            Input input = new Input(text.getText(), calculator);
+            input.calculate();
             text.setText("" + calculator.getCurrentValue());
             this.resultShowing = true;
         });
