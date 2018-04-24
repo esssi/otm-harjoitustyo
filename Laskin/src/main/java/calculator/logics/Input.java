@@ -19,8 +19,8 @@ public class Input {
         this.operationSymbols = new ArrayList<>();
         this.numbers = new ArrayList<>();
     }
-    // huomiselle hommaa: hoida laskujärjestys loppuun, lisää ( ja )
-    public boolean hasMultiplicationsOrDivisions(){
+    
+    public boolean hasMultiplicationsOrDivisions() {
         if (s.contains("*") || s.contains("/")) {
             return true;
         }
@@ -40,18 +40,19 @@ public class Input {
         //entä piste ym?
     }
     
-    public void listNumbersAsDouble(){
+    public void listNumbersAsDouble() {
         this.listOperationSymbols();
         Iterator<Integer> iter = this.operationSymbols.iterator();
         
         int first = 0;
-        if (this.operationSymbols.contains(0)) {
-            // toimiiko nyt, jos lasku on "-3*8" tms? -ei näköjään
-            first = 1;
-        }
         
-        while(iter.hasNext()){
+        while (iter.hasNext()) {
             int last = iter.next();
+            if (last == 0) {
+                first = 1;
+                last = iter.next();
+            }
+            
             double numberAsDouble = Double.parseDouble(s.substring(first, last));
             first = last + 1;
             // listataan numerot, huom. viimeinen lisätään erikseen
@@ -72,37 +73,51 @@ public class Input {
         return this.operationSymbols;
     }
     
+    private void sumAndSubtract() {
+        // ei jako- ja kertolaskuja -> voidaan laskea vas. oikealle
+        for (int i = 0; i < this.operationSymbols.size(); i++) {
+            if (s.charAt(this.operationSymbols.get(i)) == '+') {
+                c.add(this.numbers.get(i + 1));
+            } else if (s.charAt(this.operationSymbols.get(i)) == '-') {
+                c.subtract(this.numbers.get(i + 1));
+            }
+        }
+        // ei toimi tällä hetkellä laskulle muotoa "-x+y" tms
+    }
+    
     public void calculate() {
+        // tapahtuu todella kummia kun liukulukua kerrotaan..
         this.listNumbersAsDouble();
+        boolean firstNumberNegative = false;
+        
+        if (s.charAt(0) == '-') {
+            c.subtract(this.numbers.get(0));
+            firstNumberNegative = true;
+        } else {
+            c.add(this.numbers.get(0));
+        }
         
         if (this.hasMultiplicationsOrDivisions()) {
-            //tänne jotain rekursiivista?
-            for (int i = 0; i < this.operationSymbols.size(); i++) {
-                if (i > 0 && s.charAt(this.operationSymbols.get(i - 1)) == '+') {
-                    c.add(this.numbers.get(i));
-                } else if (i > 0 && s.charAt(this.operationSymbols.get(i - 1)) == '-') {
-                    // tämä kohta ei toimi oikein - varmaan koska oletus on että miinus ei alussa
-                    c.subtract(this.numbers.get(i));
-                } else {
-                    c.add(this.numbers.get(i));
-                }
-                
-                if(s.charAt(this.operationSymbols.get(i)) == '*'){
-                    c.multiplyBy(this.numbers.get(i + 1));
+            //tänne jotain rekursiivista?     
+            for (int i = 0; i < this.operationSymbols.size(); i++) { 
+                if (s.charAt(this.operationSymbols.get(i)) == '*') {
+                    if (firstNumberNegative) {
+                        c.multiplyBy(this.numbers.get(i));
+                    } else {
+                        c.multiplyBy(this.numbers.get(i + 1));
+                    }
+                    
                 } else if (s.charAt(this.operationSymbols.get(i)) == '/') {
-                    c.divideBy(this.numbers.get(i + 1));
+                    if (firstNumberNegative) {
+                        c.divideBy(this.numbers.get(i));
+                    } else {
+                        c.divideBy(this.numbers.get(i + 1));
+                    }
                 }
             }
         } else {
-            c.add(this.numbers.get(0));
-            
-            for (int i = 0; i < this.operationSymbols.size(); i++) {
-                if(s.charAt(this.operationSymbols.get(i)) == '+'){
-                    c.add(this.numbers.get(i + 1));
-                } else {
-                    c.subtract(this.numbers.get(i + 1));
-                }
-            }
+            this.sumAndSubtract();
         }
     }
+
 }

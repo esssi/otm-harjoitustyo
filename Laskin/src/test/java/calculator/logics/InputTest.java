@@ -46,6 +46,14 @@ public class InputTest {
     }
     
     @Test
+    public void listNumbersAsDoubleWorksRightWhenFirstIsNegative() {
+        Input i = new Input("-100+55", new Calculator());
+        i.listNumbersAsDouble();
+        
+        assertTrue(i.getNumbers().get(0) == 100 && i.getNumbers().get(1) == 55);
+    }
+    
+    @Test
     public void additionAndSubtractionWorkRight() {
         Calculator calculator = new Calculator();
         Input i = new Input("10-15+20+1-4", calculator);
@@ -53,5 +61,41 @@ public class InputTest {
         
         assertTrue(calculator.getCurrentValue() == 12);        
     }
-    // edelleen ongelmia negatiivisten lukujen kanssa
+    
+    @Test
+    public void multiplicationWorksRight() {
+        Calculator calculator = new Calculator();
+        Input i = new Input("2*3*10", calculator);
+        i.calculate();
+        
+        assertTrue(calculator.getCurrentValue() == 60);
+    }
+    
+    @Test
+    public void divisionWorksRight() {
+        Calculator calculator = new Calculator();
+        Input i = new Input("16/2/4", calculator);
+        i.calculate();
+        
+        assertTrue(calculator.getCurrentValue() == 2);
+    }
+    
+    @Test
+    public void multiplicationWorksRightWhenFirstIsNegative() {
+        Calculator c = new Calculator();
+        Input i = new Input("-5*10*3", c);
+        i.calculate();
+        
+        assertTrue(c.getCurrentValue() == -150);
+    }
+    
+    @Test
+    public void divisionWorksRightWhenFirstIsNegative() {
+        Calculator c = new Calculator();
+        Input i = new Input("-42/7", c);
+        i.calculate();
+        
+        assertTrue(c.getCurrentValue() == -6);
+    }
+    
 }

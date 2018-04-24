@@ -37,7 +37,6 @@ public class CalculatorApp extends Application {
     public void operationButtonAction(Button b) {
         b.setOnAction((event) -> {
             if (this.resultShowing == true) {
-                // muuten lisää tuloksen uudelleen... HUPS ei toimi neg. tuloksilla
                 calculator.subtract(Double.parseDouble(text.getText()));
             }
             text.setText(text.getText() + b.getText());
