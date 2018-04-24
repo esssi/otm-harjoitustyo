@@ -4,4 +4,5 @@
 
 [työaikakirjanpito](https://github.com/esssi/otm-harjoitustyo/blob/master/dokumentointi/tyoaikakirjanpito.md)
 
+[release](https://github.com/esssi/otm-harjoitustyo/releases)
 
