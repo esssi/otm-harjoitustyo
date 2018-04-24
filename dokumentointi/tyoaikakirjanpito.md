@@ -11,5 +11,6 @@ Päivämäärä | Aika | Mitä tein
 19.4. | 4 | Oh-ja:n kertausta; suunnittelua
 20.4. | 1,5 | Ohjelmointia
 23.4. | 3 | Ohjelmointia, testausta
-YHT. | 21,5 | -
+24.4. | 2,5 | Testausta, pieniä korjauksia; sekvenssikaavio, jar
+YHT. | 24 | -
 
