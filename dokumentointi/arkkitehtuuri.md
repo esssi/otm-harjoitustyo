@@ -1,0 +1,1 @@
+![Alustava luokkakaavio](alustavakaavio.png)
