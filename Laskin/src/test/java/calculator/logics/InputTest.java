@@ -120,9 +120,12 @@ public class InputTest {
     @Test
     public void getProductsWorksRight() {
         Calculator c = new Calculator();
-        Input i = new Input("5+3*7+11-300/20-40*2", c);
+        Input i = new Input("5+7*9+11-300/20-40*2", c);
         i.listNumbersAsDouble();
-        
-        assertTrue(i.getProducts().get(0) == 21 && i.getProducts().get(1) == 80);
+        // entä jos peräkkäisiä kertolaskuja
+        assertTrue(i.getProductsAndQuotients().get(0) == 63 &&
+        i.getProductsAndQuotients().get(1) == 15 &&
+        i.getProductsAndQuotients().get(2) == 80);
     }
+    
 }

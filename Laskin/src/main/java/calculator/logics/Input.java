@@ -107,19 +107,24 @@ public class Input {
         this.sumAndSubtract();
     }
     // tämä on vain alustava idea
-    public List<Double> getProducts() {
-        List<Double> products = new ArrayList<>();
-        
+    public List<Double> getProductsAndQuotients() {
+        List<Double> productsEtc = new ArrayList<>();
+        // ei toimi peräkkäisillä kerto- tai jakolaskuilla (esim. a*b*c)
         for (int i = 0; i < this.operationSymbols.size(); i++) {
             if (s.charAt(this.operationSymbols.get(i)) == '*') {
                 Calculator help = new Calculator();
                 help.add(this.numbers.get(i));
                 help.multiplyBy(this.numbers.get(i + 1));
-                products.add(help.getCurrentValue());
+                productsEtc.add(help.getCurrentValue());
+            } else if (s.charAt(this.operationSymbols.get(i)) == '/') {
+                Calculator help = new Calculator();
+                help.add(this.numbers.get(i));
+                help.divideBy(this.numbers.get(i + 1));
+                productsEtc.add(help.getCurrentValue());
             }
         }
         
-        return products;
+        return productsEtc;
     }
     
 }
