@@ -82,42 +82,44 @@ public class Input {
                 c.subtract(this.numbers.get(i + 1));
             }
         }
-        // ei toimi tällä hetkellä laskulle muotoa "-x+y" tms
     }
     
     public void calculate() {
-        // tapahtuu todella kummia kun liukulukua kerrotaan..
         this.listNumbersAsDouble();
-        boolean firstNumberNegative = false;
         
         if (s.charAt(0) == '-') {
             c.subtract(this.numbers.get(0));
-            firstNumberNegative = true;
+            this.operationSymbols.remove(0);
         } else {
             c.add(this.numbers.get(0));
         }
-        
+        // toimii jos kerto-ja jakolaskut ovat alussa ja yhteen-ja vähennysl. lopussa
         if (this.hasMultiplicationsOrDivisions()) {
-            //tänne jotain rekursiivista?     
             for (int i = 0; i < this.operationSymbols.size(); i++) { 
                 if (s.charAt(this.operationSymbols.get(i)) == '*') {
-                    if (firstNumberNegative) {
-                        c.multiplyBy(this.numbers.get(i));
-                    } else {
-                        c.multiplyBy(this.numbers.get(i + 1));
-                    }
-                    
+                    c.multiplyBy(this.numbers.get(i + 1));
                 } else if (s.charAt(this.operationSymbols.get(i)) == '/') {
-                    if (firstNumberNegative) {
-                        c.divideBy(this.numbers.get(i));
-                    } else {
-                        c.divideBy(this.numbers.get(i + 1));
-                    }
+                    c.divideBy(this.numbers.get(i + 1));
                 }
             }
-        } else {
-            this.sumAndSubtract();
-        }
+        } 
+        
+        this.sumAndSubtract();
     }
-
+    // tämä on vain alustava idea
+    public List<Double> getProducts() {
+        List<Double> products = new ArrayList<>();
+        
+        for (int i = 0; i < this.operationSymbols.size(); i++) {
+            if (s.charAt(this.operationSymbols.get(i)) == '*') {
+                Calculator help = new Calculator();
+                help.add(this.numbers.get(i));
+                help.multiplyBy(this.numbers.get(i + 1));
+                products.add(help.getCurrentValue());
+            }
+        }
+        
+        return products;
+    }
+    
 }

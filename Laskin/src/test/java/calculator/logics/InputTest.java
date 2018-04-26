@@ -63,6 +63,15 @@ public class InputTest {
     }
     
     @Test
+    public void additionAndSubtractionWorkWhenFirstNumberNegative() {
+        Calculator c = new Calculator();
+        Input i = new Input("-4+10", c);
+        i.calculate();
+        
+        assertTrue(c.getCurrentValue() == 6);
+    }
+    
+    @Test
     public void multiplicationWorksRight() {
         Calculator calculator = new Calculator();
         Input i = new Input("2*3*10", calculator);
@@ -98,4 +107,22 @@ public class InputTest {
         assertTrue(c.getCurrentValue() == -6);
     }
     
+    @Test
+    public void calculatingWorksWhenMultiplicationsAndDivisionsComeFirst() {
+        Calculator c = new Calculator();
+        Input i = new Input("20/4*7+5", c);
+        i.calculate();
+        
+        assertTrue(c.getCurrentValue() == 40);
+    }
+    // huomaa että laskin ei toistaiseksi toimi jos + ja - laskut ennen muita
+    
+    @Test
+    public void getProductsWorksRight() {
+        Calculator c = new Calculator();
+        Input i = new Input("5+3*7+11-300/20-40*2", c);
+        i.listNumbersAsDouble();
+        
+        assertTrue(i.getProducts().get(0) == 21 && i.getProducts().get(1) == 80);
+    }
 }
