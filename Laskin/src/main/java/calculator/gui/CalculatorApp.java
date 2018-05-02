@@ -54,7 +54,7 @@ public class CalculatorApp extends Application {
         layout.setTop(text);
         
         GridPane buttons = new GridPane();
-        // muista muuttaa napit samankokoisiksi
+        
         int number = 9;
         for (int i = 1; i <= 3; i++) {
             for (int j = 1; j <= 3; j++) {
@@ -77,7 +77,7 @@ public class CalculatorApp extends Application {
             this.clearText();
         });
         buttons.add(clear, 4, 1);
-        //napit eivät vielä toimi kunnolla!!!
+        // kertoma- ja potenssinapit eivät vielä toimi laskimen kanssa oikein
         Button equals = new Button("=");
         equals.setOnAction((event) -> {
             Input input = new Input(text.getText(), calculator);
@@ -85,7 +85,7 @@ public class CalculatorApp extends Application {
             text.setText("" + calculator.getCurrentValue());
             this.resultShowing = true;
         });
-        buttons.add(equals, 4, 4);
+        buttons.add(equals, 3, 4);
         
         Button plus = new Button("+");
         this.operationButtonAction(plus);
@@ -116,12 +116,6 @@ public class CalculatorApp extends Application {
             text.setText(text.getText() + point.getText());
         });
         buttons.add(point, 1, 4);
-        
-        Button negative = new Button("(-)");
-        negative.setOnAction((event) -> {
-            text.setText(text.getText() + "-");
-        });
-        buttons.add(negative, 3, 4);
         
         layout.setCenter(buttons);
         Scene scene = new Scene(layout);

@@ -37,7 +37,7 @@ public class Input {
                 this.operationSymbols.add(i);
             }
         }
-        //entä piste ym?
+        //pistettä ei tarvitse lisätä
     }
     
     public void listNumbersAsDouble() {
@@ -84,8 +84,25 @@ public class Input {
         }
     }
     
+    private void powersAndFactorials() {
+        // ei toimi
+        int firstIndex = s.charAt(this.operationSymbols.get(0));
+        if (firstIndex == '!') {
+            int number = Integer.parseInt(s.substring(0, firstIndex));
+            Calculator help = new Calculator();
+            help.factorial(number);
+            this.numbers.add(0, help.getCurrentValue());
+        }
+//        huom pitää olla integer
+//        for (int i = 1; i < this.operationSymbols.size(); i++) {
+//
+//        }
+    }
+    
     public void calculate() {
         this.listNumbersAsDouble();
+        // tämä metodi on työn alla:
+        this.powersAndFactorials();
         
         if (s.charAt(0) == '-') {
             c.subtract(this.numbers.get(0));
@@ -105,26 +122,7 @@ public class Input {
         } 
         
         this.sumAndSubtract();
-    }
-    // tämä on vain alustava idea
-    public List<Double> getProductsAndQuotients() {
-        List<Double> productsEtc = new ArrayList<>();
-        // ei toimi peräkkäisillä kerto- tai jakolaskuilla (esim. a*b*c)
-        for (int i = 0; i < this.operationSymbols.size(); i++) {
-            if (s.charAt(this.operationSymbols.get(i)) == '*') {
-                Calculator help = new Calculator();
-                help.add(this.numbers.get(i));
-                help.multiplyBy(this.numbers.get(i + 1));
-                productsEtc.add(help.getCurrentValue());
-            } else if (s.charAt(this.operationSymbols.get(i)) == '/') {
-                Calculator help = new Calculator();
-                help.add(this.numbers.get(i));
-                help.divideBy(this.numbers.get(i + 1));
-                productsEtc.add(help.getCurrentValue());
-            }
-        }
-        
-        return productsEtc;
+        // miksi 5.555 + 4.441 antaa oudon tuloksen??
     }
     
 }

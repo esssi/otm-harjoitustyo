@@ -29,11 +29,11 @@ public class InputTest {
     
     @Test
     public void listOperationSymbolsWorksRight() {
-        Input i = new Input("634*20+36/3", new Calculator());
+        Input i = new Input("634*20+5!", new Calculator());
         i.listOperationSymbols();
         
         assertTrue(i.getOperationSymbols().get(0) == 3 && 
-        i.getOperationSymbols().get(1) == 6 && i.getOperationSymbols().get(2) == 9);
+        i.getOperationSymbols().get(1) == 6 && i.getOperationSymbols().get(2) == 8);
     }
     
     @Test
@@ -116,16 +116,12 @@ public class InputTest {
         assertTrue(c.getCurrentValue() == 40);
     }
     // huomaa että laskin ei toistaiseksi toimi jos + ja - laskut ennen muita
-    
     @Test
-    public void getProductsWorksRight() {
+    public void factorialsAreCalculaterRight() {
         Calculator c = new Calculator();
-        Input i = new Input("5+7*9+11-300/20-40*2", c);
-        i.listNumbersAsDouble();
-        // entä jos peräkkäisiä kertolaskuja
-        assertTrue(i.getProductsAndQuotients().get(0) == 63 &&
-        i.getProductsAndQuotients().get(1) == 15 &&
-        i.getProductsAndQuotients().get(2) == 80);
+        Input i = new Input("4!", c);
+        
+        assertTrue(c.getCurrentValue() == 24);
     }
     
 }
