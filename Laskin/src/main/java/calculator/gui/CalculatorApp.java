@@ -15,6 +15,7 @@ public class CalculatorApp extends Application {
     private boolean resultShowing;
     Calculator calculator = new Calculator();
     Label text = new Label("");
+    Label errorText = new Label("");
     
     private void clearText() {
         calculator.clear();
@@ -51,7 +52,9 @@ public class CalculatorApp extends Application {
         BorderPane layout = new BorderPane();
         
         text.setMinHeight(40);
+        errorText.setMinHeight(20);
         layout.setTop(text);
+        layout.setBottom(errorText);
         
         GridPane buttons = new GridPane();
         
@@ -75,15 +78,20 @@ public class CalculatorApp extends Application {
         Button clear = new Button("C");
         clear.setOnAction((event) -> {
             this.clearText();
+            errorText.setText("");
         });
         buttons.add(clear, 4, 1);
         // kertoma- ja potenssinapit eivät vielä toimi laskimen kanssa oikein
         Button equals = new Button("=");
         equals.setOnAction((event) -> {
-            Input input = new Input(text.getText(), calculator);
-            input.calculate();
-            text.setText("" + calculator.getCurrentValue());
-            this.resultShowing = true;
+            if (text.getText().charAt(0) == '*' || text.getText().charAt(0) == '/') {
+                errorText.setText("Virheellinen syöte");
+            } else {
+                Input input = new Input(text.getText(), calculator);
+                input.calculate();
+                text.setText("" + calculator.getCurrentValue());
+                this.resultShowing = true;
+            }
         });
         buttons.add(equals, 3, 4);
         

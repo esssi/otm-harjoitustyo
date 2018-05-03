@@ -37,7 +37,6 @@ public class Input {
                 this.operationSymbols.add(i);
             }
         }
-        //pistettä ei tarvitse lisätä
     }
     
     public void listNumbersAsDouble() {
@@ -84,25 +83,25 @@ public class Input {
         }
     }
     
-    private void powersAndFactorials() {
-        // ei toimi
-        int firstIndex = s.charAt(this.operationSymbols.get(0));
-        if (firstIndex == '!') {
-            int number = Integer.parseInt(s.substring(0, firstIndex));
-            Calculator help = new Calculator();
-            help.factorial(number);
-            this.numbers.add(0, help.getCurrentValue());
-        }
+//    private void powersAndFactorials() {
+//        // ei toimi
+//        int firstIndex = s.charAt(this.operationSymbols.get(0));
+//        if (firstIndex == '!') {
+//            int number = Integer.parseInt(s.substring(0, firstIndex));
+//            Calculator help = new Calculator();
+//            help.factorial(number);
+//            this.numbers.add(0, help.getCurrentValue());
+//        }
 //        huom pitää olla integer
 //        for (int i = 1; i < this.operationSymbols.size(); i++) {
 //
 //        }
-    }
+//    }
     
     public void calculate() {
         this.listNumbersAsDouble();
         // tämä metodi on työn alla:
-        this.powersAndFactorials();
+//        this.powersAndFactorials();
         
         if (s.charAt(0) == '-') {
             c.subtract(this.numbers.get(0));
