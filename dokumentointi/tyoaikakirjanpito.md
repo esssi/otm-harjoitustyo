@@ -14,5 +14,7 @@ Päivämäärä | Aika | Mitä tein
 24.4. | 2,5 | Testausta, pieniä korjauksia; sekvenssikaavio, jar
 26.4. | 3,5 | Korjauksia
 2.5. | 1 | Ongelmakohtien kartoittamista
-YHT. | 28,5 | -
+8.5. | 3 | Laskujärjestyksen pähkäilyä
+9.5. | 2 | Ohjelmointia
+YHT. | 33,5 | -
 

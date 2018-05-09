@@ -11,6 +11,7 @@ public class Input {
     private Calculator c;
     private List<Integer> operationSymbols;
     private List<Double> numbers;
+    private List<Double> products;
     
     public Input(String s, Calculator c) {
         this.s = s;
@@ -18,6 +19,7 @@ public class Input {
         // tänne listataan indeksit, joista +,-,* jne löytyvät
         this.operationSymbols = new ArrayList<>();
         this.numbers = new ArrayList<>();
+        this.products = new ArrayList<>();
     }
     
     public boolean hasMultiplicationsOrDivisions() {
@@ -72,31 +74,40 @@ public class Input {
         return this.operationSymbols;
     }
     
+//        private void powersAndFactorials() {
+//        huom pitää olla integer 
+//    }
+    
     private void sumAndSubtract() {
-        // ei jako- ja kertolaskuja -> voidaan laskea vas. oikealle
+        c.clear();
+        if (s.charAt(this.operationSymbols.get(0)) == '+' || 
+            s.charAt(this.operationSymbols.get(0)) == '-') {
+            c.add(this.numbers.get(0));
+            // lisää tulojen listalle alkion 0, poistetaan?
+            this.products.remove(0);
+        } 
+        // EI TOIMI VIELÄ
+        int j = 0;
         for (int i = 0; i < this.operationSymbols.size(); i++) {
-            if (s.charAt(this.operationSymbols.get(i)) == '+') {
-                c.add(this.numbers.get(i + 1));
+            if (s.charAt(this.operationSymbols.get(i)) == '*'
+                || s.charAt(this.operationSymbols.get(i)) == '/') {
+                if (i == 0 || s.charAt(this.operationSymbols.get(i - 1)) != '*') {
+                    c.add(this.products.get(j));
+                    j++;
+                }
+                
+            } else if (s.charAt(this.operationSymbols.get(i)) == '+') {
+                if (i < this.operationSymbols.size() - 1 && s.charAt(this.operationSymbols.get(i + 1)) == '*') {
+                    c.add(this.products.get(j));
+                } else {
+                    c.add(this.numbers.get(i + 1));
+                }
+                
             } else if (s.charAt(this.operationSymbols.get(i)) == '-') {
                 c.subtract(this.numbers.get(i + 1));
             }
-        }
+        }        
     }
-    
-//    private void powersAndFactorials() {
-//        // ei toimi
-//        int firstIndex = s.charAt(this.operationSymbols.get(0));
-//        if (firstIndex == '!') {
-//            int number = Integer.parseInt(s.substring(0, firstIndex));
-//            Calculator help = new Calculator();
-//            help.factorial(number);
-//            this.numbers.add(0, help.getCurrentValue());
-//        }
-//        huom pitää olla integer
-//        for (int i = 1; i < this.operationSymbols.size(); i++) {
-//
-//        }
-//    }
     
     public void calculate() {
         this.listNumbersAsDouble();
@@ -104,24 +115,43 @@ public class Input {
 //        this.powersAndFactorials();
         
         if (s.charAt(0) == '-') {
-            c.subtract(this.numbers.get(0));
+            this.numbers.set(0, -1 * this.numbers.get(0));
             this.operationSymbols.remove(0);
-        } else {
-            c.add(this.numbers.get(0));
         }
-        // toimii jos kerto-ja jakolaskut ovat alussa ja yhteen-ja vähennysl. lopussa
+        
         if (this.hasMultiplicationsOrDivisions()) {
-            for (int i = 0; i < this.operationSymbols.size(); i++) { 
+            if (s.charAt(this.operationSymbols.get(0)) == '*') {
+                c.add(this.numbers.get(0));
+                c.multiplyBy(this.numbers.get(1));
+            } else if (s.charAt(this.operationSymbols.get(0)) == '/') {
+                c.add(this.numbers.get(0));
+                c.divideBy(this.numbers.get(1));
+            }
+            
+            for (int i = 1; i < this.operationSymbols.size(); i++) { 
+                
                 if (s.charAt(this.operationSymbols.get(i)) == '*') {
+                    if (s.charAt(this.operationSymbols.get(i - 1)) != '*' &&
+                        s.charAt(this.operationSymbols.get(i - 1)) != '/') {
+                        this.products.add(c.getCurrentValue());
+                        c.clear();
+                        c.add(this.numbers.get(i));
+                    }
                     c.multiplyBy(this.numbers.get(i + 1));
+                    
                 } else if (s.charAt(this.operationSymbols.get(i)) == '/') {
+                    if (s.charAt(this.operationSymbols.get(i - 1)) != '/' &&
+                        s.charAt(this.operationSymbols.get(i - 1)) != '*') {
+                        this.products.add(c.getCurrentValue());
+                        c.clear();
+                        c.add(this.numbers.get(i));
+                    }
                     c.divideBy(this.numbers.get(i + 1));
                 }
             }
         } 
-        
-        this.sumAndSubtract();
-        // miksi 5.555 + 4.441 antaa oudon tuloksen??
+        this.products.add(c.getCurrentValue());
+        this.sumAndSubtract(); 
     }
     
 }
