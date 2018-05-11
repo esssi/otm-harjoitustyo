@@ -8,5 +8,7 @@
 
 [testidokumentti](https://github.com/esssi/otm-harjoitustyo/blob/master/dokumentointi/testaus.md)
 
+[käyttöohje](https://github.com/esssi/otm-harjoitustyo/blob/master/dokumentointi/ohje.md)
+
 [release](https://github.com/esssi/otm-harjoitustyo/releases)
 
