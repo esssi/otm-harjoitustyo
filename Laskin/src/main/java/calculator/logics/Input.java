@@ -81,20 +81,20 @@ public class Input {
         for (int i = 0; i < this.operationSymbols.size(); i++) {
             if (s.charAt(this.operationSymbols.get(i)) == '+') {
                 if (i == this.operationSymbols.size() - 1 || 
-                (s.charAt(this.operationSymbols.get(i + 1)) != '*' &&
-                s.charAt(this.operationSymbols.get(i + 1)) != '/')) {
+                    (s.charAt(this.operationSymbols.get(i + 1)) != '*' &&
+                    s.charAt(this.operationSymbols.get(i + 1)) != '/')) {
                     c.add(this.numbers.get(i + 1));
                 }
             } else if (s.charAt(this.operationSymbols.get(i)) == '-') {
-                if (i == this.operationSymbols.size() - 1|| 
-                (s.charAt(this.operationSymbols.get(i + 1)) != '*' &&
-                s.charAt(this.operationSymbols.get(i + 1)) != '/')) {
+                if (i == this.operationSymbols.size() - 1 || 
+                    (s.charAt(this.operationSymbols.get(i + 1)) != '*' &&
+                    s.charAt(this.operationSymbols.get(i + 1)) != '/')) {
                     c.subtract(this.numbers.get(i + 1));
                 }
             }
         }
         
-        for(int i = 0; i < this.products.size(); i++) {
+        for (int i = 0; i < this.products.size(); i++) {
             c.add(this.products.get(i));
         }
     }
@@ -111,7 +111,7 @@ public class Input {
         for (int i = 1; i < this.operationSymbols.size(); i++) {  
             if (s.charAt(this.operationSymbols.get(i)) == '*') {
                 if (s.charAt(this.operationSymbols.get(i - 1)) != '*' &&
-                s.charAt(this.operationSymbols.get(i - 1)) != '/') {
+                    s.charAt(this.operationSymbols.get(i - 1)) != '/') {
                     this.products.add(c.getCurrentValue());
                     c.clear();
                     c.add(this.numbers.get(i));
@@ -123,7 +123,7 @@ public class Input {
                     
             } else if (s.charAt(this.operationSymbols.get(i)) == '/') {
                 if (s.charAt(this.operationSymbols.get(i - 1)) != '/' &&
-                s.charAt(this.operationSymbols.get(i - 1)) != '*') {
+                    s.charAt(this.operationSymbols.get(i - 1)) != '*') {
                     this.products.add(c.getCurrentValue());
                     c.clear();
                     c.add(this.numbers.get(i));
