@@ -6,5 +6,7 @@
 
 [arkkitehtuuri](https://github.com/esssi/otm-harjoitustyo/blob/master/dokumentointi/arkkitehtuuri.md)
 
+[testidokumentti](https://github.com/esssi/otm-harjoitustyo/blob/master/dokumentointi/testaus.md)
+
 [release](https://github.com/esssi/otm-harjoitustyo/releases)
 
