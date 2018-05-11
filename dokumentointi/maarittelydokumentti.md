@@ -1,20 +1,18 @@
 **Sovelluksen tarkoitus**
 
-Sovelluksen perusversio on yksinkertainen "taskulaskin", jolla voi laskea yhteen-, vähennys-, kerto- ja jakolaskuja. Sovellusta laajennetaan erilaisilla funktiolaskimen toiminnoilla annetun ajan puitteissa.
+Sovellus on yksinkertainen laskin, jolla voi laskea yhteen-, vähennys-, kerto- ja jakolaskuja.
 
 **Suunnitellut toiminnallisuudet** 
 
 Ydintoiminnallisuus
 
-* Käyttäjä voi laskea yhteen-, vähennys-, kerto- ja jakolaskuja desimaaliluvuilla
-* Käyttäjä voi muuttaa tavanomaista laskujärjestystä suluilla
-* Käyttäjän laskemat laskut tallennetaan automaattisesti laskimen muistiin
-* Käyttäjä voi hakea muistista aiempien laskujensa tuloksia ja käyttää niitä osana uutta laskua
-* Käyttäjä voi tyhjentää laskimen muistin
+* Käyttäjä voi laskea yhteen-, vähennys-, kerto- ja jakolaskuja desimaaliluvuilla.
+* Käyttäjä voi laskea useita eri laskutoimituksia ilman '='-painikkeen painamista laskujen välissä.
+* Käyttäjä voi jatkaa laskemista saadusta tuloksesta tai nollata laskimen uutta laskua varten.
 
 Jatkokehitysideoita
 
-* Käyttäjä voi syöttää luvut myös murto- tai sekalukuina
-* Käyttäjä voi laskea lukujen potensseja
-* Käyttäjä voi laskea kombinatorisia laskuja, kuten kertomia ja binomikertoimia
-* Käyttäjä voi mahdollisesti käyttää myös joitakin seuraavista funktiolaskimen toiminnoista: juuri-, logaritmi- ja trigonometriset funktiot
+* Laskimeen voisi lisätä muistin, jonka voi tyhjentää.
+* Laskimessa voisi olla napit luvuille e ja pii.
+* Laskimella voisi laskea potensseja.
+* Käyttäjä voisi mahdollisesti käyttää joitakin seuraavista funktiolaskimen toiminnoista: juuri-, logaritmi- ja trigonometriset funktiot.
