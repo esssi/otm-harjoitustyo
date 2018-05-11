@@ -16,5 +16,7 @@ Päivämäärä | Aika | Mitä tein
 2.5. | 1 | Ongelmakohtien kartoittamista
 8.5. | 3 | Laskujärjestyksen pähkäilyä
 9.5. | 2 | Ohjelmointia
-YHT. | 33,5 | -
+10.5. | 2 | Suunnittelua
+11.5. | 3 | Ohjelmointia, testidokumentti, käyttöohje ym.
+YHT. | 38,5 | -
 
