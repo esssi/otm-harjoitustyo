@@ -36,30 +36,4 @@ public class Calculator {
         currentValue *= x;
     }
     
-    public void power(int n) {
-        if (n < 0) {
-            return;
-        }
-        
-        if (n == 0) {
-            currentValue = 1;
-        }
-        
-        double base = currentValue;
-        for (int i = 1; i < n; i++) {
-            multiplyBy(base);
-        }
-    }
-    
-    public void factorial(int n) {
-        if (n == 0) {
-            currentValue = 1;
-        } else {
-            for (int i = n - 1; i > 0; i--) {
-                n *= i;
-            }
-            
-            currentValue = n;
-        }   
-    }
 }

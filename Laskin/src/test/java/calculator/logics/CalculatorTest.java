@@ -60,48 +60,11 @@ public class CalculatorTest {
     }
     
     @Test
-    public void exponentZeroGivesOne(){
-        c.add(10);
-        c.power(0);
-        
-        assertTrue(c.getCurrentValue() == 1);
-    }
-    
-    @Test
-    public void powerIsCorrect(){
-        c.add(2);
-        c.power(4);
-        
-        assertTrue(c.getCurrentValue() == 16);
-    }
-    
-    @Test
-    public void zeroFactorialEqualsOne(){
-        c.factorial(0);
-        
-        assertTrue(c.getCurrentValue() == 1);
-    }
-    
-    @Test
-    public void factorialGivesCorrectAnswer(){
-        c.factorial(9);
-        
-        assertTrue(c.getCurrentValue() == 362880);
-    }
-    
-    @Test
     public void clearSetsZeroAsCurrentValue(){
         c.subtract(4);
         c.clear();
         
         assertTrue(c.getCurrentValue() == 0);
     }
-    
-    @Test
-    public void negativeExponentDoesNotChangeTheValue(){
-        c.add(5);
-        c.power(-2);
-        
-        assertTrue(c.getCurrentValue() == 5);
-    }
+
 }

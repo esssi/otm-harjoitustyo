@@ -25,8 +25,6 @@ public class CalculatorApp extends Application {
     
     public void numberButtonAction(Button b){
         b.setOnAction((event) -> {
-            /*tarkistetaan, ettei tulos jää näytölle, jos käyttäjä ei
-            muista painaa C-nappulaa ennen numeroita*/
             if (this.resultShowing == true) {
                 this.clearText();
             }
@@ -80,8 +78,8 @@ public class CalculatorApp extends Application {
             this.clearText();
             errorText.setText("");
         });
-        buttons.add(clear, 4, 1);
-        // kertoma- ja potenssinapit eivät vielä toimi laskimen kanssa oikein
+        buttons.add(clear, 5, 1);
+
         Button equals = new Button("=");
         equals.setOnAction((event) -> {
             if (text.getText().charAt(0) == '*' || text.getText().charAt(0) == '/') {
@@ -97,27 +95,19 @@ public class CalculatorApp extends Application {
         
         Button plus = new Button("+");
         this.operationButtonAction(plus);
-        buttons.add(plus, 5, 1);
+        buttons.add(plus, 4, 1);
         
         Button minus = new Button("-");
         this.operationButtonAction(minus);
-        buttons.add(minus, 5, 2);
+        buttons.add(minus, 4, 2);
         
         Button times = new Button("*");
         this.operationButtonAction(times);
-        buttons.add(times, 5, 3);
+        buttons.add(times, 4, 3);
         
         Button divide = new Button("/");
         this.operationButtonAction(divide);
-        buttons.add(divide, 5, 4);
-        
-        Button exponent = new Button("^");
-        this.operationButtonAction(exponent);
-        buttons.add(exponent, 4, 2);
-        
-        Button factorial = new Button("!");
-        this.operationButtonAction(factorial);
-        buttons.add(factorial, 4, 3);
+        buttons.add(divide, 4, 4);
         
         Button point = new Button(".");
         point.setOnAction((event) -> {
